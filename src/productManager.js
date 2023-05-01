@@ -1,6 +1,6 @@
-const fs = require(`fs`);
-const { get } = require("http");
-const { test } = require("node:test");
+import fs from 'fs';
+//import get from "http";
+//const { test } = require("node:test");
 
 export default class ProductManager {
 
@@ -129,68 +129,15 @@ export default class ProductManager {
 
 const mates = new ProductManager();
 
-const test1 = async () => {
-	// intento
-	try {
-		// Agregar mate
-		await mates.addProduct("Mate","Mate de Plástico", 200,`ruta a definir`, 8, 50);
+const testing = async () => {
+    try{
+        await mates.addProduct("Mate","Mate de Plástico", 200,`ruta a definir`, 8, 50);
         await mates.addProduct("Mate","Mate de Vidrio", 350,`ruta a definir`, 7, 50);
         await mates.addProduct("Mate","Mate de Cerámica", 120,`ruta a definir`, 6, 50);
-	} catch (err) {
-		// Si hay error imprimo el error en consola
-		console.log('Something went wrong with test1.');
-	}
-};
-
-const test2 = async (num) => {
-	// intento
-	try {
-		// Elimino un producto
-		await mates.getProductById(num);
-	} catch (err) {
-		// Si hay error imprimo el error en consola
-		console.log('Something went wrong with test2.');
-	}
-};
-
-const test3 = async () => {
-    try{
-        console.log(await mates.getProducts());
-    }
-    catch(err){
-        console.log(`Something went wrong with test3.`)
-    }
-};
-
-const test4 = async (num) => {
-    try{
-        await mates.deleteProduct(num);
-    }
-    catch(err){
-        console.log(`Something went wrong with test4.`)
-    }
-};
-
-const test5 = async (idProduct, object) => {
-    try{
-        await mates.updateProduct(idProduct,object)
     }
     catch{
-        console.log(`Something went wrong with test5`)
+        console.log('Something went wrong with the testing.');
     }
 };
 
-// Ejecuto el test
-const executeTest = async () => {
-    try{
-        await test1();
-        console.log(`Done test1`)
-        await test3();
-        console.log(`Done test3`)
-    }
-    catch (err) {
-        console.log(`Something went wrong with the testings`)
-    }
-}
-
-executeTest();
+testing();

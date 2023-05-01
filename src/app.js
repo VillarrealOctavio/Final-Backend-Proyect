@@ -20,9 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/products', async (req, res)=>{
     try{
         // Obtenemos el límite de la query
-        const number = await req.query.limit;
-        if (number) {
-            
+        const limit = await req.query.limit;
+        const allProducts = await productManager.getProducts()
+        if (limit) {
+            res.send(await allProducts.slice(0, limit))
         }else{
             return res.send(productManager.getProducts())
         }
